@@ -1,4 +1,5 @@
-const BASE_URL = "http://wirvsvirus.agile-punks.com/";
+const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+const BASE_URL = PROXY_URL + "https://wirvsvirus.agile-punks.com/";
 const HEADERS = {
   Accept: "application/json",
   "Content-Type": "application/json"
