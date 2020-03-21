@@ -27,4 +27,11 @@ export default class Api {
     });
     return await response.json();
   }
+
+  static async getUserStats(userName) {
+    const response = await fetch(BASE_URL + "users/" + username + "/stats", {
+      headers: HEADERS
+    })
+    return await response.json();
+  }
 }
