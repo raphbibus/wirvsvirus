@@ -1,13 +1,27 @@
-# Stay at Home App
+# Stay at home app frontend
 
-Ein Projekt für den "Wir vs Virus" Hackathon 2020
+## Table of contents
 
-## Frontend
+1. [Description](#description)
+2. [Base url](#base-url)
+3. [Sources](#sources)
+   1. [React native components](#react-native-components)
+   2. [Expo documentation](#expo-documentation)
 
-### React Native Components
+## Description
 
-https://reactnative.dev/docs/activityindicator
+A project for the hackaton "[Wir vs Virus](https://wirvsvirushackathon.org)"
 
-### Expo Documentation
+## Base url
 
-https://docs.expo.io/versions/latest/
+[TODO](https://github.com/raphbibus/wirvsvirus)
+
+## Sources
+
+### React native components
+
+[reactnative docs activityindicator ](https://reactnative.dev/docs/activityindicator)
+
+### Expo documentation
+
+[expo documentation](https://docs.expo.io/versions/latest/)
