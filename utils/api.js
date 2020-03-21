@@ -44,7 +44,7 @@ export default class Api {
   static async createEnteredHomeEvent(userName, timestamp) {
     const response = await fetch(BASE_URL + "users/" + userName + "/home-enter", {
       method: "POST",
-      headers: HEADERS
+      headers: HEADERS,
       body: JSON.stringify({
         timestamp: timestamp
       })
@@ -57,7 +57,7 @@ export default class Api {
   static async createEnteredHomeEvent(userName, timestamp, token) {
     const response = await fetch(BASE_URL + "users/" + userName + "/home-leave", {
       method: "POST",
-      headers: HEADERS
+      headers: HEADERS,
       body: JSON.stringify({
         timestamp: timestamp,
         token: token
