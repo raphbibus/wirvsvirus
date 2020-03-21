@@ -1,9 +1,10 @@
 import React from "react";
 import HomeScreen from "./screens/Home";
 import LoginScreen from "./screens/Login";
-import { AsyncStorage, Text, ScrollView } from "react-native";
+import { AsyncStorage, Text, ScrollView, Alert } from "react-native";
 import Api from "./utils/api";
 import { apisAreAvailable } from "expo";
+import * as Font from "expo-font";
 
 export default class App extends React.Component {
   state = {
@@ -12,6 +13,13 @@ export default class App extends React.Component {
   };
 
   async componentDidMount() {
+    // Font Usage:
+    // <Text style={{ fontFamily: 'nunito-bold' }}>
+    Font.loadAsync({
+      nunito: require("./assets/fonts/Nunito-Regular.ttf"),
+      "nunito-bold": require("./assets/fonts/Nunito-Bold.ttf"),
+      "nunito-italic": require("./assets/fonts/Nunito-Italic.ttf")
+    });
     // clear local data on app start
     await AsyncStorage.clear();
 

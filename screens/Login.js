@@ -26,10 +26,24 @@ export default class LoginScreen extends React.Component {
           justifyContent: "center"
         }}
       >
-        <Text style={{ fontSize: 30, marginBottom: 20 }}>
+        <Text
+          style={{
+            fontFamily: "nunito-bold",
+            fontSize: 30,
+            marginBottom: 20
+          }}
+        >
           Stay at Home
         </Text>
-        <Text style={{ fontSize: 20, marginBottom: 20 }}>Login</Text>
+        <Text
+          style={{
+            fontFamily: "nunito",
+            fontSize: 20,
+            marginBottom: 20
+          }}
+        >
+          Login
+        </Text>
         <TextInput
           value={name}
           onChangeText={name => this.setState({ name })}
