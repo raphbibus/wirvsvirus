@@ -20,6 +20,10 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.wirvsvirus.careantiny",
+      "versionCode": 1
     }
   }
 }
