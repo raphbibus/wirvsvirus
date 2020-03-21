@@ -2,7 +2,8 @@ const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
 const BASE_URL = PROXY_URL + "https://wirvsvirus.agile-punks.com/";
 const HEADERS = {
   Accept: "application/json",
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*",
 };
 
 export default class Api {
