@@ -67,4 +67,6 @@ export default class Api {
 
     return await response.json();
   }
+
+  // Todo add points service
 }
