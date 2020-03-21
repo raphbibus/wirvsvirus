@@ -15,7 +15,7 @@ A project for the hackaton "[Wir vs Virus](https://wirvsvirushackathon.org)"
 
 ## Base url
 
-[TODO](https://github.com/raphbibus/wirvsvirus)
+[careantiny.de](http://careantiny.de)
 
 ## Backend repo
 
