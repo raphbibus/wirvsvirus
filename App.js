@@ -1,67 +1,65 @@
-import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { SplashScreen } from 'expo';
-import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import HomeScreen from "./screens/Home";
+import LoginScreen from "./screens/Login";
+import { AsyncStorage, Text, ScrollView } from "react-native";
+import Api from "./utils/api";
+import { apisAreAvailable } from "expo";
 
-import BottomTabNavigator from './navigation/BottomTabNavigator';
-import useLinking from './navigation/useLinking';
+export default class App extends React.Component {
+  state = {
+    user: null,
+    error: null
+  };
 
-const Stack = createStackNavigator();
+  async componentDidMount() {
+    // clear local data on app start
+    await AsyncStorage.clear();
 
-export default function App(props) {
-  const [isLoadingComplete, setLoadingComplete] = React.useState(false);
-  const [initialNavigationState, setInitialNavigationState] = React.useState();
-  const containerRef = React.useRef();
-  const { getInitialState } = useLinking(containerRef);
+    const userName = await AsyncStorage.getItem("username");
 
-  // Load any resources or data that we need prior to rendering the app
-  React.useEffect(() => {
-    async function loadResourcesAndDataAsync() {
+    if (userName !== null) {
       try {
-        SplashScreen.preventAutoHide();
-
-        // Load our initial navigation state
-        setInitialNavigationState(await getInitialState());
-
-        // Load fonts
-        await Font.loadAsync({
-          ...Ionicons.font,
-          'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-        });
+        const user = await Api.getUser(userName);
+        this.setState({ user });
       } catch (e) {
-        // We might want to provide this error information to an error reporting service
-        console.warn(e);
-      } finally {
-        setLoadingComplete(true);
-        SplashScreen.hide();
+        this.setState({ error: e.message });
       }
     }
+  }
 
-    loadResourcesAndDataAsync();
-  }, []);
+  handleLogin = async displayName => {
+    //generate a random username
+    const userName =
+      "user_" +
+      displayName.split(" ").join("-") +
+      "_" +
+      Math.random()
+        .toString(36)
+        .replace("0.", "");
+    try {
+      const user = await Api.createUser(userName, displayName);
+      await AsyncStorage.setItem("username", userName);
+      this.setState({ user });
+    } catch (e) {
+      this.setState({ error: e.message });
+    }
+  };
 
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
-    return null;
-  } else {
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </View>
-    );
+  render() {
+    const { error, user } = this.state;
+
+    if (error)
+      return (
+        <ScrollView>
+          <Text style={{ color: "red", margin: 20 }}>
+            Error: {error}
+          </Text>
+        </ScrollView>
+      );
+
+    if (user === null)
+      return <LoginScreen onLogin={this.handleLogin} />;
+
+    return <HomeScreen user={user} />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
