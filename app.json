@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Care An Tiny",
-    "description": "WIP",
+    "description": "Der Kampf gegen das Coronavirus ist in vollem Gange und für uns alle heißt es: zu Hause bleiben!\nDa könnte so manch einen ein falsches Gefühl von Einsamkeit überkommen, aber CareAnTiny zeigt dir: Du bist nicht allein!\n\nCareAnTiny ist eine App, die uns spielerisch anspornt, zu Hause zu bleiben, um die Ausbreitung des Coronavirus zu bekämpfen. \n\nPflege mit CareAnTiny deine eigene Pflanze und lasse sie zum prachtvollsten Gewächs deiner Stadt gedeihen. Diese Pflanze braucht kein Sonnenlicht. Damit sie sich wohl fühlt, braucht es nur dich in deinen heimischen vier Wänden. Verlässt du jedoch dein zu Hause, wird sie welk und schwach. \n\nZeige den Corona-Viren was eine Harke ist und lass deine Pflanze gedeihen, indem du zu Hause bleibst! Mach mit beim größten kollaborativen Blumenbeet, was die Welt je gesehen hat!\n",
     "slug": "wirvsvirus",
     "privacy": "public",
     "sdkVersion": "36.0.0",
