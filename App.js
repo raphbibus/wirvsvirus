@@ -3,23 +3,33 @@ import HomeScreen from "./screens/Home";
 import LoginScreen from "./screens/Login";
 import { AsyncStorage, Text, ScrollView, Alert } from "react-native";
 import Api from "./utils/api";
-import { apisAreAvailable } from "expo";
+import { apisAreAvailable, SplashScreen } from "expo";
 import * as Font from "expo-font";
 
 export default class App extends React.Component {
   state = {
     user: null,
-    error: null
+    error: null,
+    ready: false
   };
+
+  constructor(props) {
+    super(props);
+    SplashScreen.preventAutoHide();
+  }
 
   async componentDidMount() {
     // Font Usage:
     // <Text style={{ fontFamily: 'nunito-bold' }}>
-    Font.loadAsync({
+    await Font.loadAsync({
       nunito: require("./assets/fonts/Nunito-Regular.ttf"),
       "nunito-bold": require("./assets/fonts/Nunito-Bold.ttf"),
+      "nunito-black": require("./assets/fonts/Nunito-Black.ttf"),
       "nunito-italic": require("./assets/fonts/Nunito-Italic.ttf")
     });
+
+    this.setState({ ready: true });
+
     // clear local data on app start
     await AsyncStorage.clear();
 
@@ -33,6 +43,8 @@ export default class App extends React.Component {
         this.setState({ error: e.message });
       }
     }
+
+    SplashScreen.hide();
   }
 
   handleLogin = async displayName => {
@@ -54,7 +66,9 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { error, user } = this.state;
+    const { error, user, ready } = this.state;
+
+    if (!ready) return null;
 
     if (error)
       return (
