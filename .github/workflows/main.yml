@@ -6,6 +6,8 @@ on:
 jobs:
   publish:
     name: Install and publish
+    env:
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -19,3 +21,6 @@ jobs:
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: yarn install
       - run: expo publish
+      - uses: Ilshidur/action-discord@master
+        with:
+          args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
