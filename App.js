@@ -5,6 +5,7 @@ import { AsyncStorage, Text, ScrollView, Alert } from "react-native";
 import Api from "./utils/api";
 import { apisAreAvailable, SplashScreen } from "expo";
 import * as Font from "expo-font";
+import TrackHome from "./utils/TrackHome";
 
 export default class App extends React.Component {
   state = {
@@ -45,6 +46,9 @@ export default class App extends React.Component {
     }
 
     SplashScreen.hide();
+
+    const trackHome = new TrackHome();
+    trackHome.executeLooped();
   }
 
   handleLogin = async displayName => {
