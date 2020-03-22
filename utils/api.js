@@ -11,7 +11,8 @@ export default class Api {
       headers: HEADERS
     });
 
-    if (response.status > 299) throw new Error(await response.text());
+    if (response.status == 404) throw new Error("User not found!");
+    else if (response.status != 200) throw new Error("something went wrong: " + await response.text());
 
     return await response.json();
   }
