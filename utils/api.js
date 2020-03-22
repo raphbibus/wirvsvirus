@@ -35,6 +35,30 @@ const HEADERS = {
  * @author Raphael Hahn
  */
 export default class Api {
+  /**
+   * Function to get the statistics of a user.
+   *
+   * Calls :
+   * @example
+   * GET users/<username>/stats | 200 OK | 404 on not found
+   *
+   *
+   * //response
+   *  {
+   *    "seconds": 124513235,
+   *    "points": 1341
+   *  }
+   *
+   * @param userName The user name
+   * @returns {Promise<any>} A stats object
+   * @throws Error when username is null or empty
+   * @throws Error when the user does not exists
+   * @throws Error when the backend is not available
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @author Raphael Hahn
+   */
   static async getUserStats(userName) {
     if (userName == null) throw new Error("Username should not be null!");
     if (username === "") throw new Error("Username should not be empty!");
