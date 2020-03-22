@@ -24,7 +24,7 @@ export default class Api {
     if (userName == null) throw new Error("Username should not be null!");
     if (username === "") throw new Error("Username should not be empty!");
     if (timestamp == null) throw new Error("Timestamp should not be null!");
-    if (username === "") throw new Error("Timestamp should not be empty!");
+    if (timestamp === "") throw new Error("Timestamp should not be empty!");
 
     const response = await fetch(BASE_URL + "users/" + userName + "/home-enter", {
       method: "POST",
@@ -45,7 +45,7 @@ export default class Api {
     if (userName == null) throw new Error("Username should not be null!");
     if (username === "") throw new Error("Username should not be empty!");
     if (timestamp == null) throw new Error("Timestamp should not be null!");
-    if (username === "") throw new Error("Timestamp should not be empty!");
+    if (timestamp === "") throw new Error("Timestamp should not be empty!");
     if (token == null) throw new Error("Token should not be null!");
     if (token === "") throw new Error("Token should not be empty");
 
