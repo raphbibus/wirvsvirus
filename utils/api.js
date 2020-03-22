@@ -21,6 +21,55 @@ export default class Api {
     return await response.json();
   }
 
+  static async createUserWithNation(userName, displayName, nation) {
+    const response = await fetch(BASE_URL + "users", {
+      method: "POST",
+      headers: HEADERS,
+      body: JSON.stringify({
+        username: userName,
+        display_name: displayName,
+        nation: nation
+      })
+    });
+
+    if (response.status > 299) throw new Error(await response.text());
+
+    return await response.json();
+  }
+
+  static async createUserWithCity(userName, displayName, city) {
+    const response = await fetch(BASE_URL + "users", {
+      method: "POST",
+      headers: HEADERS,
+      body: JSON.stringify({
+        username: userName,
+        display_name: displayName,
+        city: city
+      })
+    });
+
+    if (response.status > 299) throw new Error(await response.text());
+
+    return await response.json();
+  }
+
+  static async createUserComplete(userName, displayName, nation, city) {
+    const response = await fetch(BASE_URL + "users", {
+      method: "POST",
+      headers: HEADERS,
+      body: JSON.stringify({
+        username: userName,
+        display_name: displayName,
+        nation: nation,
+        city: city
+      })
+    });
+
+    if (response.status > 299) throw new Error(await response.text());
+
+    return await response.json();
+  }
+
   static async getUser(userName) {
     const response = await fetch(BASE_URL + "users/" + userName, {
       headers: HEADERS
@@ -68,5 +117,26 @@ export default class Api {
     return await response.json();
   }
 
-  // Todo add points service
+  static async addPoints(userName, points) {
+    const response = await fetch(BASE_URL + "users/" + userName + "/points-add", {
+      method: "POST",
+      headers: HEADERS,
+      body: JSON.stringify({
+        points: points
+      })
+    });
+    if (response.status > 299) throw new Error(await response.text());
+
+    return await response.json();
+  }
+
+  static async getLeaderboard() {
+    const response = await fetch(BASE_URL + "leaderboard", {
+      headers: HEADERS
+    });
+
+    if (response.status > 299) throw new Error(await response.text());
+
+    return await response.json();
+  }
 }
