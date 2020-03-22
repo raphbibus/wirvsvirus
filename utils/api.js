@@ -204,4 +204,16 @@ export default class Api {
 
     return await response.json();
   }
+
+  static async getLeaderboardPage(page) {
+    if (!Number.isInteger(points)) throw new Error("Page should be an integer!");
+
+    const response = await fetch(BASE_URL + "leaderboard?page=" + page, {
+      headers: HEADERS
+    });
+
+    if (response.status != 200) throw new Error("Something went wrong: " + await response.text());
+
+    return await response.json();
+  }
 }
