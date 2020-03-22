@@ -24,6 +24,16 @@ const HEADERS = {
   "Access-Control-Allow-Origin": "*",
 };
 
+/**
+ * @class Api
+ *
+ * The class {@link Api} provides functions for accessing the api endpoint hosted at {@link BASE_URL}.
+ *
+ * @exports Api
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Raphael Hahn
+ */
 export default class Api {
   static async getUserStats(userName) {
     if (userName == null) throw new Error("Username should not be null!");
