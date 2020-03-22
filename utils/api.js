@@ -7,12 +7,15 @@ const HEADERS = {
 
 export default class Api {
   static async getUserStats(userName) {
+    if (userName === null) throw new Error("Username should not be null!");
+    if (username == "") throw new Error("Username should not be empty!")
+
     const response = await fetch(BASE_URL + "users/" + userName + "/stats", {
       headers: HEADERS
     });
 
     if (response.status == 404) throw new Error("User not found!");
-    if (response.status != 200) throw new Error("something went wrong: " + await response.text());
+    if (response.status != 200) throw new Error("Something went wrong: " + await response.text());
 
     return await response.json();
   }
