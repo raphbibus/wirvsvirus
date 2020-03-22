@@ -138,6 +138,7 @@ export default class Api {
      * Function to save when the user leaves the home wifi.
      *
      * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#create-left-home-event}
      * @example
      * POST users/<username>/home-leave | 201 Created | 422 on validation error | 404 on not found
      *
@@ -161,7 +162,7 @@ export default class Api {
      * @param timestamp The time when the user has entered
      * @param token The token returned by the last {@link createEnteredHomeEvent}
      *
-     * @returns {Promise<any>} A entered home object
+     * @returns {Promise<any>} A left home object
      *
      * @throws Error when username is null or empty
      * @throws Error when timestamp is null or empty
@@ -198,6 +199,36 @@ export default class Api {
         return await response.json();
     }
 
+  /**
+   * Function to get the information about a specific user.
+   *
+   * Calls :
+   * {@link https://github.com/raphbibus/wirvsvirus_backend#get-user}
+   * @example
+   * GET users/<username> | 200 OK | 404 on not found
+   *
+   *
+   * //response
+   *  {
+   *    "seconds": 124513235,
+   *    "points": 1341,
+   *    "username": "<some username>",
+   *    "display_name": "<some display name>"
+   *  }
+   *
+   * @param userName The user name
+   *
+   * @returns {Promise<any>} A user object
+   *
+   * @throws Error when username is null or empty
+   * @throws Error when timestamp is null or empty
+   * @throws Error when the user does not exists
+   * @throws Error when the backend is not available
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @author Raphael Hahn
+   */
     static async getUser(userName) {
         if (userName == null) throw new Error("Username should not be null!");
         if (username === "") throw new Error("Username should not be empty!");
