@@ -44,7 +44,7 @@ export default class Api {
      * GET users/<username>/stats | 200 OK | 404 on not found
      *
      *
-     * //response
+     *  //response
      *  {
      *    "seconds": 124513235,
      *    "points": 1341
@@ -85,12 +85,12 @@ export default class Api {
      * POST users/<username>/home-enter | 201 Created | 422 on validation error | 404 on not found
      *
      *
-     * // payload
+     *  // payload
      *  {
      *    "timestamp": "2020-03-21T10:50:22.000000Z"
      *  }
      *
-     * //response
+     *  //response
      *  {
      *    "entered": "2020-03-21 10:50:22",
      *    "token": "9ce46249294e220f06434d57911a7c4a", //used for home-leave reference
@@ -143,13 +143,13 @@ export default class Api {
      * POST users/<username>/home-leave | 201 Created | 422 on validation error | 404 on not found
      *
      *
-     * // payload
+     *  // payload
      *  {
      *    "timestamp": "2020-03-21T15:50:22.000000Z",
      *    "token": "9ce46249294e220f06434d57911a7c4a"
      *  }
      *
-     * //response
+     *  //response
      *  {
      *    "entered": "2020-03-21T10:50:22.000000Z",
      *    "left": "2020-03-21T15:50:22.000000Z",
@@ -208,12 +208,16 @@ export default class Api {
      * GET users/<username> | 200 OK | 404 on not found
      *
      *
-     * //response
+     *  //response
      *  {
      *    "seconds": 124513235,
      *    "points": 1341,
      *    "username": "<some username>",
-     *    "display_name": "<some display name>"
+     *    "display_name": "<some display name>",
+     *    "created_at": "2020-03-21T09:32:39.000000Z",
+     *    "updated_at": "2020-03-21T09:32:39.000000Z",
+     *    "nation": "Deutschland",
+     *    "city": "Berlin"
      *  }
      *
      * @param userName The user name
@@ -243,6 +247,49 @@ export default class Api {
         return await response.json();
     }
 
+    /**
+     * Function to create a new user.
+     *
+     * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#create-user}
+     * @example
+     * POST users | 201 Created | 422 on validation error
+     *
+     *
+     *  // payload
+     *  {
+     *    "username": "<unique username>",
+     *    "display_name": "<some display name>",
+     *    "nation": "de", //optional country code
+     *    "city": "Berlin" //optional
+     *  }
+     *
+     *  //response
+     *  {
+     *    "username": "raphbibus204",
+     *    "display_name": "Ralph",
+     *    "points": 0,
+     *    "seconds": 0,
+     *    "nation": "de",
+     *    "city": "Berlin",
+     *    "updated_at": "2020-03-21T19:41:02.000000Z",
+     *    "created_at": "2020-03-21T19:41:02.000000Z"
+     *  }
+     *
+     * @param userName The user name
+     * @param displayName The name that is shown in the profile
+     *
+     * @returns {Promise<any>} A user object
+     *
+     * @throws Error when username is null or empty
+     * @throws Error when timestamp is null or empty
+     * @throws Error when the user does not exists
+     * @throws Error when the backend is not available
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Raphael Hahn
+     */
     static async createUser(userName, displayName) {
         if (userName == null) throw new Error("Username should not be null!");
         if (username === "") throw new Error("Username should not be empty!");
