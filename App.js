@@ -6,8 +6,6 @@ import Api from "./utils/api";
 import { apisAreAvailable, SplashScreen } from "expo";
 import * as Font from "expo-font";
 import EntryScreen from "./screens/Entry";
-import * as TaskManager from 'expo-task-manager';
-import * as BackgroundFetch from 'expo-background-fetch';
 import NetInfo from '@react-native-community/netinfo';
 import * as Network from 'expo-network';
 
@@ -103,4 +101,7 @@ const unsubscribe = NetInfo.addEventListener(state => {
   console.log('EXPO__ ' + JSON.stringify(ololo));
   alert(Network.getNetworkStateAsync());
   alert(state.isConnected);
+  console.log("SSID", JSON.stringify(state.details));
+  console.log("Is connected?", state.isConnected);
+
 });
