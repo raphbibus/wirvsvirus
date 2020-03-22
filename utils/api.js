@@ -200,7 +200,7 @@ export default class Api {
       headers: HEADERS
     });
 
-    if (response.status > 299) throw new Error(await response.text());
+    if (response.status != 200) throw new Error("Something went wrong: " + await response.text());
 
     return await response.json();
   }
