@@ -176,6 +176,10 @@ export default class Api {
   }
 
   static async addPoints(userName, points) {
+    if (userName == null) throw new Error("Username should not be null!");
+    if (username === "") throw new Error("Username should not be empty!");
+    if (!Number.isInteger(points)) throw new Error("Points should be an integer!");
+
     const response = await fetch(BASE_URL + "users/" + userName + "/points-add", {
       method: "POST",
       headers: HEADERS,
@@ -183,7 +187,10 @@ export default class Api {
         points: points
       })
     });
-    if (response.status > 299) throw new Error(await response.text());
+
+    if (response.status == 404) throw new Error("User not found!");
+    if (response.status == 422) throw new Error("Points could not be added: " + await response.text());
+    if (response.status != 201) throw new Error("Something went wrong: " + await response.text());
 
     return await response.json();
   }
