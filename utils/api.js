@@ -523,6 +523,47 @@ export default class Api {
         return await response.json();
     }
 
+    /**
+     * Function to add points to a user profile.
+     *
+     * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#add-points}
+     * @example
+     * POST users/<username>/points-add | 201 Created | 422 on validation error | 404 on not found
+     *
+     *
+     *  // payload
+     *  {
+     *    "points": 400 //some integer
+     *  }
+     *
+     *  //response
+     *  {
+     *    "username": "raphbibus204",
+     *    "display_name": "Ralph",
+     *    "created_at": "2020-03-21T21:30:31.000000Z",
+     *    "updated_at": "2020-03-21T21:30:55.000000Z",
+     *    "seconds": 0,
+     *    "points": 3400,
+     *    "nation": "de",
+     *    "city": "Berlin"
+     *  }
+     *
+     * @param userName The user name
+     * @param points The number of points to add
+     *
+     * @returns {Promise<any>} A user object
+     *
+     * @throws Error when username is null or empty
+     * @throws Error when points is no integer
+     * @throws Error when the user does not exist
+     * @throws Error when the points could not be added
+     * @throws Error when the backend is not available
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Raphael Hahn
+     */
     static async addPoints(userName, points) {
         if (userName == null) throw new Error("Username should not be null!");
         if (username === "") throw new Error("Username should not be empty!");
