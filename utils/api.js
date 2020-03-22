@@ -1,4 +1,23 @@
+/**
+ * Base url to the api endpoint.
+ *
+ * Documentation is found at {@link https://github.com/raphbibus/wirvsvirus_backend}.
+ *
+ * @type {string}
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Raphael Hahn
+ */
 const BASE_URL = "https://wirvsvirus.agile-punks.com/";
+
+/**
+ * The headers to append on every backend request.
+ *
+ * @type {{Accept: string, "Access-Control-Allow-Origin": string, "Content-Type": string}}
+ * @since 1.0.0
+ * @version 1.0.0
+ * @author Raphael Hahn
+ */
 const HEADERS = {
   Accept: "application/json",
   "Content-Type": "application/json",
