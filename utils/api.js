@@ -654,7 +654,7 @@ export default class Api {
      * Calls :
      * {@link https://github.com/raphbibus/wirvsvirus_backend#get-leaderboard}
      * @example
-     * GET leaderboard | 200 OK
+     * GET leaderboard?page=<page> | 200 OK
      *
      *  //response
      *  {
@@ -717,6 +717,63 @@ export default class Api {
         return await response.json();
     }
 
+    /**
+     * Function to get a leaderboard from a specified nation.
+     *
+     * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#get-leaderboard-by-nation}
+     * @example
+     * GET leaderboard/nation/<simple locale> | 200 OK
+     *
+     *  //response
+     *  {
+     *      "current_page": 1,
+     *      "data": [
+     *          {
+     *              "username": "stoltenberg.lawrence",
+     *              "display_name": "Tomas Veum",
+     *              "created_at": "2020-03-22T11:06:17.000000Z",
+     *              "updated_at": "2020-03-22T11:06:17.000000Z",
+     *              "seconds": 233405,
+     *              "points": 194177,
+     *              "nation": "de",
+     *              "city": "München"
+     *          },
+     *          //further results, 20 per page
+     *          {
+     *              "username": "joaquin.kutch",
+     *              "display_name": "Merle Schoen III",
+     *              "created_at": "2020-03-22T11:06:17.000000Z",
+     *              "updated_at": "2020-03-22T11:06:17.000000Z",
+     *              "seconds": 524157,
+     *              "points": 91921,
+     *              "nation": "de",
+     *              "city": "Treppendorf"
+     *          }
+     *      ],
+     *      "first_page_url": "https://wirvsvirus.agile-punks.com/leaderboard/nation/de?page=1",
+     *      "from": 1,
+     *      "last_page": 2,
+     *      "last_page_url": "https://wirvsvirus.agile-punks.com/leaderboard/nation/de?page=2",
+     *      "next_page_url": "https://wirvsvirus.agile-punks.com/leaderboard/nation/de?page=2",
+     *      "path": "https://wirvsvirus.agile-punks.com/leaderboard/nation/de",
+     *      "per_page": 20,
+     *      "prev_page_url": null,
+     *      "to": 20,
+     *      "total": 36
+     *  }
+     *
+     * @param nationCode The country code to get the leaderboard of
+     *
+     * @returns {Promise<any>} A leaderboard object
+     *
+     * @throws Error when the nationcode is null or empty
+     * @throws Error when the backend is not available
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Raphael Hahn
+     */
     static async getLeaderboardByNation(nationCode) {
         if (nationCode == null) throw new Error("NationCode should not be null!");
         if (nationCode === "") throw new Error("NationCode should not be empty!");
@@ -730,6 +787,65 @@ export default class Api {
         return await response.json();
     }
 
+    /**
+     * Function to get a leaderboard from a specified nation.
+     *
+     * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#get-leaderboard-by-nation}
+     * @example
+     * GET leaderboard/nation/<simple locale>?page=<page> | 200 OK
+     *
+     *  //response
+     *  {
+     *      "current_page": 1,
+     *      "data": [
+     *          {
+     *              "username": "stoltenberg.lawrence",
+     *              "display_name": "Tomas Veum",
+     *              "created_at": "2020-03-22T11:06:17.000000Z",
+     *              "updated_at": "2020-03-22T11:06:17.000000Z",
+     *              "seconds": 233405,
+     *              "points": 194177,
+     *              "nation": "de",
+     *              "city": "München"
+     *          },
+     *          //further results, 20 per page
+     *          {
+     *              "username": "joaquin.kutch",
+     *              "display_name": "Merle Schoen III",
+     *              "created_at": "2020-03-22T11:06:17.000000Z",
+     *              "updated_at": "2020-03-22T11:06:17.000000Z",
+     *              "seconds": 524157,
+     *              "points": 91921,
+     *              "nation": "de",
+     *              "city": "Treppendorf"
+     *          }
+     *      ],
+     *      "first_page_url": "https://wirvsvirus.agile-punks.com/leaderboard/nation/de?page=1",
+     *      "from": 1,
+     *      "last_page": 2,
+     *      "last_page_url": "https://wirvsvirus.agile-punks.com/leaderboard/nation/de?page=2",
+     *      "next_page_url": "https://wirvsvirus.agile-punks.com/leaderboard/nation/de?page=2",
+     *      "path": "https://wirvsvirus.agile-punks.com/leaderboard/nation/de",
+     *      "per_page": 20,
+     *      "prev_page_url": null,
+     *      "to": 20,
+     *      "total": 36
+     *  }
+     *
+     * @param nationCode The country code to get the leaderboard of
+     * @param page
+     *
+     * @returns {Promise<any>} A leaderboard object
+     *
+     * @throws Error when the nationcode is null or empty
+     * @throws Error when the page number is not an integer
+     * @throws Error when the backend is not available
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Raphael Hahn
+     */
     static async getLeaderboardPageByNation(page, nationCode) {
         if (!Number.isInteger(page)) throw new Error("Page should be an integer!");
         if (nationCode == null) throw new Error("NationCode should not be null!");
