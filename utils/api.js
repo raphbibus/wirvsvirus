@@ -23,6 +23,8 @@ export default class Api {
   static async createEnteredHomeEvent(userName, timestamp) {
     if (userName === null) throw new Error("Username should not be null!");
     if (username == "") throw new Error("Username should not be empty!");
+    if (timestamp === null) throw new Error("Timestamp should not be null!");
+    if (username == "") throw new Error("Timestamp should not be empty!");
 
     const response = await fetch(BASE_URL + "users/" + userName + "/home-enter", {
       method: "POST",
@@ -40,6 +42,13 @@ export default class Api {
   }
 
   static async createLeftHomeEvent(userName, timestamp, token) {
+    if (userName === null) throw new Error("Username should not be null!");
+    if (username == "") throw new Error("Username should not be empty!");
+    if (timestamp === null) throw new Error("Timestamp should not be null!");
+    if (username == "") throw new Error("Timestamp should not be empty!");
+    if (token === null) throw new Error("Token should not be null!");
+    if (token == "") throw new Error("Token should not be empty");
+
     const response = await fetch(BASE_URL + "users/" + userName + "/home-leave", {
       method: "POST",
       headers: HEADERS,
@@ -48,7 +57,10 @@ export default class Api {
         token: token
       })
     });
-    if (response.status > 299) throw new Error(await response.text());
+
+    if (response.status == 404) throw new Error("User not found!");
+    if (response.status == 422) throw new Error("Invalid timestamp or token!");
+    if (response.status != 201) throw new Error("Something went wrong: " + await response.text());
 
     return await response.json();
   }
