@@ -66,11 +66,15 @@ export default class Api {
   }
 
   static async getUser(userName) {
+    if (userName === null) throw new Error("Username should not be null!");
+    if (username == "") throw new Error("Username should not be empty!");
+
     const response = await fetch(BASE_URL + "users/" + userName, {
       headers: HEADERS
     });
 
-    if (response.status > 299) throw new Error(await response.text());
+    if (response.status == 404) throw new Error("User not found!");
+    if (response.status != 200) throw new Error("Something went wrong: " + await response.text());
 
     return await response.json();
   }
