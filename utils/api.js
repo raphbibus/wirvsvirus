@@ -216,4 +216,17 @@ export default class Api {
 
     return await response.json();
   }
+
+  static async getLeaderboardByNation(nationCode) {
+    if (nationCode == null) throw new Error("NationCode should not be null!");
+    if (nationCode === "") throw new Error("NationCode should not be empty!");
+
+    const response = await fetch(BASE_URL + "leaderboard/nation/" + nationCode, {
+      headers: HEADERS
+    });
+
+    if (response.status != 200) throw new Error("Something went wrong: " + await response.text());
+
+    return await response.json();
+  }
 }
