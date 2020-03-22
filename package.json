@@ -3,13 +3,17 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
+    "build-android": "expo build:android -t app-bundle",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/netinfo": "4.6.0",
     "expo": "~36.0.0",
+    "expo-background-fetch": "~8.0.0",
     "expo-font": "~8.0.0",
+    "expo-network": "~2.0.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
