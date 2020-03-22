@@ -199,36 +199,36 @@ export default class Api {
         return await response.json();
     }
 
-  /**
-   * Function to get the information about a specific user.
-   *
-   * Calls :
-   * {@link https://github.com/raphbibus/wirvsvirus_backend#get-user}
-   * @example
-   * GET users/<username> | 200 OK | 404 on not found
-   *
-   *
-   * //response
-   *  {
-   *    "seconds": 124513235,
-   *    "points": 1341,
-   *    "username": "<some username>",
-   *    "display_name": "<some display name>"
-   *  }
-   *
-   * @param userName The user name
-   *
-   * @returns {Promise<any>} A user object
-   *
-   * @throws Error when username is null or empty
-   * @throws Error when timestamp is null or empty
-   * @throws Error when the user does not exists
-   * @throws Error when the backend is not available
-   *
-   * @since 1.0.0
-   * @version 1.0.0
-   * @author Raphael Hahn
-   */
+    /**
+     * Function to get the information about a specific user.
+     *
+     * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#get-user}
+     * @example
+     * GET users/<username> | 200 OK | 404 on not found
+     *
+     *
+     * //response
+     *  {
+     *    "seconds": 124513235,
+     *    "points": 1341,
+     *    "username": "<some username>",
+     *    "display_name": "<some display name>"
+     *  }
+     *
+     * @param userName The user name
+     *
+     * @returns {Promise<any>} A user object
+     *
+     * @throws Error when username is null or empty
+     * @throws Error when timestamp is null or empty
+     * @throws Error when the user does not exists
+     * @throws Error when the backend is not available
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Raphael Hahn
+     */
     static async getUser(userName) {
         if (userName == null) throw new Error("Username should not be null!");
         if (username === "") throw new Error("Username should not be empty!");
