@@ -51,7 +51,9 @@ export default class Api {
    *  }
    *
    * @param userName The user name
+   *
    * @returns {Promise<any>} A stats object
+   *
    * @throws Error when username is null or empty
    * @throws Error when the user does not exists
    * @throws Error when the backend is not available
@@ -98,7 +100,9 @@ export default class Api {
    *
    * @param userName The user name
    * @param timestamp The time when the user has entered
+   *
    * @returns {Promise<any>} A entered home object
+   *
    * @throws Error when username is null or empty
    * @throws Error when timestamp is null or empty
    * @throws Error when the user does not exists
@@ -140,24 +144,30 @@ export default class Api {
    *
    * // payload
    *  {
-   *    "timestamp": "2020-03-21T10:50:22.000000Z"
+   *    "timestamp": "2020-03-21T15:50:22.000000Z",
+   *    "token": "9ce46249294e220f06434d57911a7c4a"
    *  }
    *
    * //response
    *  {
-   *    "entered": "2020-03-21 10:50:22",
-   *    "token": "9ce46249294e220f06434d57911a7c4a", //used for home-leave reference
-   *    "updated_at": "2020-03-21T11:33:36.000000Z",
-   *    "created_at": "2020-03-21T11:33:36.000000Z"
+   *    "entered": "2020-03-21T10:50:22.000000Z",
+   *    "left": "2020-03-21T15:50:22.000000Z",
+   *    "token": "9ce46249294e220f06434d57911a7c4a",
+   *    "created_at": "2020-03-21T14:43:30.000000Z",
+   *    "updated_at": "2020-03-21T14:44:44.000000Z"
    *  }
    *
    * @param userName The user name
    * @param timestamp The time when the user has entered
+   * @param token The token returned by the last {@link createEnteredHomeEvent}
+   *
    * @returns {Promise<any>} A entered home object
+   *
    * @throws Error when username is null or empty
    * @throws Error when timestamp is null or empty
+   * @throws Error when token is null or empty
    * @throws Error when the user does not exists
-   * @throws Error when the timestamp is invalid
+   * @throws Error when the timestamp or the token is invalid
    * @throws Error when the backend is not available
    *
    * @since 1.0.0
