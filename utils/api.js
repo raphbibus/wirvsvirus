@@ -73,6 +73,40 @@ export default class Api {
     return await response.json();
   }
 
+  /**
+   * Function to save when the user enteres the home wifi.
+   *
+   * Calls :
+   * @example
+   * POST users/<username>/home-enter | 201 Created | 422 on validation error | 404 on not found
+   *
+   *
+   * // payload
+   *  {
+   *    "timestamp": "2020-03-21T10:50:22.000000Z"
+   *  }
+   *
+   * //response
+   *  {
+   *    "entered": "2020-03-21 10:50:22",
+   *    "token": "9ce46249294e220f06434d57911a7c4a", //used for home-leave reference
+   *    "updated_at": "2020-03-21T11:33:36.000000Z",
+   *    "created_at": "2020-03-21T11:33:36.000000Z"
+   *  }
+   *
+   * @param userName The user name
+   * @param timestamp The time when the user has entered
+   * @returns {Promise<any>} A entered home object
+   * @throws Error when username is null or empty
+   * @throws Error when timestamp is null or empty
+   * @throws Error when the user does not exists
+   * @throws Error when the timestamp is invalid
+   * @throws Error when the backend is not available
+   *
+   * @since 1.0.0
+   * @version 1.0.0
+   * @author Raphael Hahn
+   */
   static async createEnteredHomeEvent(userName, timestamp) {
     if (userName == null) throw new Error("Username should not be null!");
     if (username === "") throw new Error("Username should not be empty!");
