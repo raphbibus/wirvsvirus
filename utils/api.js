@@ -7,8 +7,8 @@ const HEADERS = {
 
 export default class Api {
   static async getUserStats(userName) {
-    if (userName === null) throw new Error("Username should not be null!");
-    if (username == "") throw new Error("Username should not be empty!");
+    if (userName == null) throw new Error("Username should not be null!");
+    if (username === "") throw new Error("Username should not be empty!");
 
     const response = await fetch(BASE_URL + "users/" + userName + "/stats", {
       headers: HEADERS
@@ -21,10 +21,10 @@ export default class Api {
   }
 
   static async createEnteredHomeEvent(userName, timestamp) {
-    if (userName === null) throw new Error("Username should not be null!");
-    if (username == "") throw new Error("Username should not be empty!");
-    if (timestamp === null) throw new Error("Timestamp should not be null!");
-    if (username == "") throw new Error("Timestamp should not be empty!");
+    if (userName == null) throw new Error("Username should not be null!");
+    if (username === "") throw new Error("Username should not be empty!");
+    if (timestamp == null) throw new Error("Timestamp should not be null!");
+    if (username === "") throw new Error("Timestamp should not be empty!");
 
     const response = await fetch(BASE_URL + "users/" + userName + "/home-enter", {
       method: "POST",
@@ -42,12 +42,12 @@ export default class Api {
   }
 
   static async createLeftHomeEvent(userName, timestamp, token) {
-    if (userName === null) throw new Error("Username should not be null!");
-    if (username == "") throw new Error("Username should not be empty!");
-    if (timestamp === null) throw new Error("Timestamp should not be null!");
-    if (username == "") throw new Error("Timestamp should not be empty!");
-    if (token === null) throw new Error("Token should not be null!");
-    if (token == "") throw new Error("Token should not be empty");
+    if (userName == null) throw new Error("Username should not be null!");
+    if (username === "") throw new Error("Username should not be empty!");
+    if (timestamp == null) throw new Error("Timestamp should not be null!");
+    if (username === "") throw new Error("Timestamp should not be empty!");
+    if (token == null) throw new Error("Token should not be null!");
+    if (token === "") throw new Error("Token should not be empty");
 
     const response = await fetch(BASE_URL + "users/" + userName + "/home-leave", {
       method: "POST",
@@ -80,10 +80,10 @@ export default class Api {
   }
 
   static async createUser(userName, displayName) {
-    if (userName === null) throw new Error("Username should not be null!");
-    if (username == "") throw new Error("Username should not be empty!");
-    if (displayName === null) throw new Error("Displayname should not be null!");
-    if (displayName == "") throw new Error("Displayname should not be empty!");
+    if (userName == null) throw new Error("Username should not be null!");
+    if (username === "") throw new Error("Username should not be empty!");
+    if (displayName == null) throw new Error("Displayname should not be null!");
+    if (displayName === "") throw new Error("Displayname should not be empty!");
 
     const response = await fetch(BASE_URL + "users", {
       method: "POST",
