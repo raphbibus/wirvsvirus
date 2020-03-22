@@ -282,8 +282,8 @@ export default class Api {
      * @returns {Promise<any>} A user object
      *
      * @throws Error when username is null or empty
-     * @throws Error when timestamp is null or empty
-     * @throws Error when the user does not exists
+     * @throws Error when displayname is null or empty
+     * @throws Error when the user does already exist
      * @throws Error when the backend is not available
      *
      * @since 1.0.0
@@ -311,6 +311,51 @@ export default class Api {
         return await response.json();
     }
 
+    /**
+     * Function to create a new user with a nation specified.
+     *
+     * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#create-user}
+     * @example
+     * POST users | 201 Created | 422 on validation error
+     *
+     *
+     *  // payload
+     *  {
+     *    "username": "<unique username>",
+     *    "display_name": "<some display name>",
+     *    "nation": "de", //optional country code
+     *    "city": "Berlin" //optional
+     *  }
+     *
+     *  //response
+     *  {
+     *    "username": "raphbibus204",
+     *    "display_name": "Ralph",
+     *    "points": 0,
+     *    "seconds": 0,
+     *    "nation": "de",
+     *    "city": "Berlin",
+     *    "updated_at": "2020-03-21T19:41:02.000000Z",
+     *    "created_at": "2020-03-21T19:41:02.000000Z"
+     *  }
+     *
+     * @param userName The user name
+     * @param displayName The name that is shown in the profile
+     * @param nation The country code of where the user is from
+     *
+     * @returns {Promise<any>} A user object
+     *
+     * @throws Error when username is null or empty
+     * @throws Error when displayname is null or empty
+     * @throws Error when nation is null or empty
+     * @throws Error when the user does already exist
+     * @throws Error when the backend is not available
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Raphael Hahn
+     */
     static async createUserWithNation(userName, displayName, nation) {
         if (userName == null) throw new Error("Username should not be null!");
         if (username === "") throw new Error("Username should not be empty!");
@@ -335,6 +380,51 @@ export default class Api {
         return await response.json();
     }
 
+    /**
+     * Function to create a new user with a city specified.
+     *
+     * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#create-user}
+     * @example
+     * POST users | 201 Created | 422 on validation error
+     *
+     *
+     *  // payload
+     *  {
+     *    "username": "<unique username>",
+     *    "display_name": "<some display name>",
+     *    "nation": "de", //optional country code
+     *    "city": "Berlin" //optional
+     *  }
+     *
+     *  //response
+     *  {
+     *    "username": "raphbibus204",
+     *    "display_name": "Ralph",
+     *    "points": 0,
+     *    "seconds": 0,
+     *    "nation": "de",
+     *    "city": "Berlin",
+     *    "updated_at": "2020-03-21T19:41:02.000000Z",
+     *    "created_at": "2020-03-21T19:41:02.000000Z"
+     *  }
+     *
+     * @param userName The user name
+     * @param displayName The name that is shown in the profile
+     * @param city The city the user is from
+     *
+     * @returns {Promise<any>} A user object
+     *
+     * @throws Error when username is null or empty
+     * @throws Error when displayname is null or empty
+     * @throws Error when city is null or empty
+     * @throws Error when the user does already exist
+     * @throws Error when the backend is not available
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Raphael Hahn
+     */
     static async createUserWithCity(userName, displayName, city) {
         if (userName == null) throw new Error("Username should not be null!");
         if (username === "") throw new Error("Username should not be empty!");
@@ -359,6 +449,53 @@ export default class Api {
         return await response.json();
     }
 
+    /**
+     * Function to create a new user with city and country specified.
+     *
+     * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#create-user}
+     * @example
+     * POST users | 201 Created | 422 on validation error
+     *
+     *
+     *  // payload
+     *  {
+     *    "username": "<unique username>",
+     *    "display_name": "<some display name>",
+     *    "nation": "de", //optional country code
+     *    "city": "Berlin" //optional
+     *  }
+     *
+     *  //response
+     *  {
+     *    "username": "raphbibus204",
+     *    "display_name": "Ralph",
+     *    "points": 0,
+     *    "seconds": 0,
+     *    "nation": "de",
+     *    "city": "Berlin",
+     *    "updated_at": "2020-03-21T19:41:02.000000Z",
+     *    "created_at": "2020-03-21T19:41:02.000000Z"
+     *  }
+     *
+     * @param userName The user name
+     * @param displayName The name that is shown in the profile
+     * @param nation The country code of where the user is from
+     * @param city The city the user is from
+     *
+     * @returns {Promise<any>} A user object
+     *
+     * @throws Error when username is null or empty
+     * @throws Error when displayname is null or empty
+     * @throws Error when nation is null or empty
+     * @throws Error when city is null or empty
+     * @throws Error when the user does already exist
+     * @throws Error when the backend is not available
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Raphael Hahn
+     */
     static async createUserComplete(userName, displayName, nation, city) {
         if (userName == null) throw new Error("Username should not be null!");
         if (username === "") throw new Error("Username should not be empty!");
