@@ -101,6 +101,13 @@ export default class Api {
   }
 
   static async createUserWithNation(userName, displayName, nation) {
+    if (userName == null) throw new Error("Username should not be null!");
+    if (username === "") throw new Error("Username should not be empty!");
+    if (displayName == null) throw new Error("Displayname should not be null!");
+    if (displayName === "") throw new Error("Displayname should not be empty!");
+    if (nation == null) throw new Error("Nation should not be null!");
+    if (nation === "") throw new Error("Nation should not be empty!");
+
     const response = await fetch(BASE_URL + "users", {
       method: "POST",
       headers: HEADERS,
@@ -111,12 +118,20 @@ export default class Api {
       })
     });
 
-    if (response.status > 299) throw new Error(await response.text());
+    if (response.status == 422) throw new Error("User could not be created: " + await response.text());
+    if (response.status != 200) throw new Error("Something went wrong: " + await response.text());
 
     return await response.json();
   }
 
   static async createUserWithCity(userName, displayName, city) {
+    if (userName == null) throw new Error("Username should not be null!");
+    if (username === "") throw new Error("Username should not be empty!");
+    if (displayName == null) throw new Error("Displayname should not be null!");
+    if (displayName === "") throw new Error("Displayname should not be empty!");
+    if (city == null) throw new Error("City should not be null!");
+    if (city === "") throw new Error("City should not be empty!");
+
     const response = await fetch(BASE_URL + "users", {
       method: "POST",
       headers: HEADERS,
@@ -127,12 +142,22 @@ export default class Api {
       })
     });
 
-    if (response.status > 299) throw new Error(await response.text());
+    if (response.status == 422) throw new Error("User could not be created: " + await response.text());
+    if (response.status != 200) throw new Error("Something went wrong: " + await response.text());
 
     return await response.json();
   }
 
   static async createUserComplete(userName, displayName, nation, city) {
+    if (userName == null) throw new Error("Username should not be null!");
+    if (username === "") throw new Error("Username should not be empty!");
+    if (displayName == null) throw new Error("Displayname should not be null!");
+    if (displayName === "") throw new Error("Displayname should not be empty!");
+    if (nation == null) throw new Error("Nation should not be null!")
+    if (nation === "") throw new Error("Nation should not be empty!");
+    if (city == null) throw new Error("City should not be null!");
+    if (city === "") throw new Error("City should not be empty!");
+
     const response = await fetch(BASE_URL + "users", {
       method: "POST",
       headers: HEADERS,
@@ -144,7 +169,8 @@ export default class Api {
       })
     });
 
-    if (response.status > 299) throw new Error(await response.text());
+    if (response.status == 422) throw new Error("User could not be created: " + await response.text());
+    if (response.status != 200) throw new Error("Something went wrong: " + await response.text());
 
     return await response.json();
   }
