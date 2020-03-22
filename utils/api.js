@@ -206,7 +206,7 @@ export default class Api {
   }
 
   static async getLeaderboardPage(page) {
-    if (!Number.isInteger(points)) throw new Error("Page should be an integer!");
+    if (!Number.isInteger(page)) throw new Error("Page should be an integer!");
 
     const response = await fetch(BASE_URL + "leaderboard?page=" + page, {
       headers: HEADERS
@@ -222,6 +222,20 @@ export default class Api {
     if (nationCode === "") throw new Error("NationCode should not be empty!");
 
     const response = await fetch(BASE_URL + "leaderboard/nation/" + nationCode, {
+      headers: HEADERS
+    });
+
+    if (response.status != 200) throw new Error("Something went wrong: " + await response.text());
+
+    return await response.json();
+  }
+
+  static async getLeaderboardPageByNation(page, nationCode) {
+    if (!Number.isInteger(page)) throw new Error("Page should be an integer!");
+    if (nationCode == null) throw new Error("NationCode should not be null!");
+    if (nationCode === "") throw new Error("NationCode should not be empty!");
+
+    const response = await fetch(BASE_URL + "leaderboard/nation/" + nationCode + "?page=" + page, {
       headers: HEADERS
     });
 
