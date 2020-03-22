@@ -6,41 +6,17 @@ import {
   TouchableOpacity,
   Alert
 } from "react-native";
-
-function Button(props) {
-  return (
-    <TouchableOpacity
-      style={{
-        height: 48,
-        backgroundColor: "#6CC066",
-        alignItems: "center",
-        justifyContent: "center",
-        width: 300,
-        borderRadius: 23,
-        shadowColor: "#6CC06678",
-        ...props.style
-      }}
-      onPress={props.onPress}
-    >
-      <Text
-        style={{
-          color: "white",
-          fontFamily: "nunito-bold"
-        }}
-      >
-        {props.children}
-      </Text>
-    </TouchableOpacity>
-  );
-}
+import Button from "../components/GreenButton";
 
 export default class LoginScreen extends React.Component {
   handleFacebookLogin = () => {
-    Alert.alert("Login Placeholder", "Facebook");
+    // Handle here or pass up to App?
+    this.props.onLogin();
   };
 
   handleGoogleLogin = () => {
-    Alert.alert("Login Placeholder", "Google");
+    // Handle here or pass up to App?
+    this.props.onLogin();
   };
 
   render() {

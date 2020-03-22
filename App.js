@@ -5,6 +5,7 @@ import { AsyncStorage, Text, ScrollView, Alert } from "react-native";
 import Api from "./utils/api";
 import { apisAreAvailable, SplashScreen } from "expo";
 import * as Font from "expo-font";
+import EntryScreen from "./screens/Entry";
 
 export default class App extends React.Component {
   state = {
@@ -47,7 +48,12 @@ export default class App extends React.Component {
     SplashScreen.hide();
   }
 
+  // outdated, needs social media login maybe?
   handleLogin = async displayName => {
+    this.setState({ user: true });
+
+    return;
+
     //generate a random username
     const userName =
       "user_" +
@@ -82,6 +88,6 @@ export default class App extends React.Component {
     if (user === null)
       return <LoginScreen onLogin={this.handleLogin} />;
 
-    return <HomeScreen user={user} />;
+    return <EntryScreen user={user} />;
   }
 }
