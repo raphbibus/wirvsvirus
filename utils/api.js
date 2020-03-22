@@ -584,6 +584,60 @@ export default class Api {
         return await response.json();
     }
 
+    /**
+     * Function to get the leaderboard.
+     *
+     * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#get-leaderboard}
+     * @example
+     * GET leaderboard | 200 OK
+     *
+     *  //response
+     *  {
+     *      "current_page": 1,
+     *      "data": [
+     *          {
+     *              "username": "wehner.gregorio",
+     *              "display_name": "Mrs. Rosalyn Bashirian",
+     *              "created_at": "2020-03-21T19:27:40.000000Z",
+     *              "updated_at": "2020-03-21T19:27:40.000000Z",
+     *              "seconds": 34399,
+     *              "points": 196153,
+     *              "nation": "id",
+     *              "city": "West Kaelynchester"
+     *          },
+     *          //further results, 20 per page
+     *          {
+     *              "username": "luigi39",
+     *              "display_name": "Katarina Feeney",
+     *              "created_at": "2020-03-21T19:27:40.000000Z",
+     *              "updated_at": "2020-03-21T19:27:40.000000Z",
+     *              "seconds": 1242550,
+     *              "points": 115899,
+     *              "nation": "ms",
+     *              "city": "Caseyberg"
+     *          }
+     *      ],
+     *      "first_page_url": "https://wirvsvirus.agile-punks.com/leaderboard?page=1",
+     *      "from": 1,
+     *      "last_page": 3,
+     *      "last_page_url": "https://wirvsvirus.agile-punks.com/leaderboard?page=3",
+     *      "next_page_url": "https://wirvsvirus.agile-punks.com/leaderboard?page=2",
+     *      "path": "https://wirvsvirus.agile-punks.com/leaderboard",
+     *      "per_page": 20,
+     *      "prev_page_url": null,
+     *      "to": 20,
+     *      "total": 54
+     *  }
+     *
+     * @returns {Promise<any>} A leaderboard object
+     *
+     * @throws Error when the backend is not available
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Raphael Hahn
+     */
     static async getLeaderboard() {
         const response = await fetch(BASE_URL + "leaderboard", {
             headers: HEADERS
@@ -594,6 +648,63 @@ export default class Api {
         return await response.json();
     }
 
+    /**
+     * Function to get a leaderboard page.
+     *
+     * Calls :
+     * {@link https://github.com/raphbibus/wirvsvirus_backend#get-leaderboard}
+     * @example
+     * GET leaderboard | 200 OK
+     *
+     *  //response
+     *  {
+     *      "current_page": 1,
+     *      "data": [
+     *          {
+     *              "username": "wehner.gregorio",
+     *              "display_name": "Mrs. Rosalyn Bashirian",
+     *              "created_at": "2020-03-21T19:27:40.000000Z",
+     *              "updated_at": "2020-03-21T19:27:40.000000Z",
+     *              "seconds": 34399,
+     *              "points": 196153,
+     *              "nation": "id",
+     *              "city": "West Kaelynchester"
+     *          },
+     *          //further results, 20 per page
+     *          {
+     *              "username": "luigi39",
+     *              "display_name": "Katarina Feeney",
+     *              "created_at": "2020-03-21T19:27:40.000000Z",
+     *              "updated_at": "2020-03-21T19:27:40.000000Z",
+     *              "seconds": 1242550,
+     *              "points": 115899,
+     *              "nation": "ms",
+     *              "city": "Caseyberg"
+     *          }
+     *      ],
+     *      "first_page_url": "https://wirvsvirus.agile-punks.com/leaderboard?page=1",
+     *      "from": 1,
+     *      "last_page": 3,
+     *      "last_page_url": "https://wirvsvirus.agile-punks.com/leaderboard?page=3",
+     *      "next_page_url": "https://wirvsvirus.agile-punks.com/leaderboard?page=2",
+     *      "path": "https://wirvsvirus.agile-punks.com/leaderboard",
+     *      "per_page": 20,
+     *      "prev_page_url": null,
+     *      "to": 20,
+     *      "total": 54
+     *  }
+     *
+     * @param page Page number of the page to load
+     *
+     * @returns {Promise<any>} A leaderboard object
+     *
+     * @throws Error when the page number is not an integer
+     * @throws Error when the backend is not available
+     *
+     * @since 1.0.0
+     * @version 1.0.0
+     * @author Raphael Hahn
+     */
     static async getLeaderboardPage(page) {
         if (!Number.isInteger(page)) throw new Error("Page should be an integer!");
 
