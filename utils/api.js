@@ -66,8 +66,8 @@ export default class Api {
   }
 
   static async getUser(userName) {
-    if (userName === null) throw new Error("Username should not be null!");
-    if (username == "") throw new Error("Username should not be empty!");
+    if (userName == null) throw new Error("Username should not be null!");
+    if (username === "") throw new Error("Username should not be empty!");
 
     const response = await fetch(BASE_URL + "users/" + userName, {
       headers: HEADERS
